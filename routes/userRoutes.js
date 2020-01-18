@@ -55,7 +55,7 @@ router.get("/user/:id",function(req,res){
 
         }
         else {
-            Blogs.find().where('author.id').equals(req.params.id).exec(function(err,AllBlogs){
+            Blogs.find().populate("comments").where('author.id').equals(req.params.id).exec(function(err,AllBlogs){
 
                 AllBlogs.forEach((blog)=>{
                     blog.content = stripString(blog.content);
