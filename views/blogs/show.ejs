@@ -8,7 +8,6 @@
 <div class="ui fluid ">
 <%-blog.content%>
 </div>
-
 <%if((CurrentUser && blog.author.id.equals(CurrentUser.id)) || (CurrentUser && CurrentUser.isAdmin)){%>
 <div  style="margin:20px 0 ;">
 <a href="/blogs/<%=blog._id%>/edit" class="ui button attached left inverted yellow">Edit</a>

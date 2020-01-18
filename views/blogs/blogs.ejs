@@ -9,7 +9,7 @@
     <div class="ui text container">
         <a href="/blogs/<%=blog._id%>"><h3 class="ui header"><%=blog.title%></h3></a>
         <p><em><%=moment(blog.createdDate).fromNow()%></em>/<em><%=blog.author.username%></em></p>
-        <p><%=blog.content.substring(0,300)%>....</p></div>
+        <p><%=blog.content.substring(0,80)%>....</p></div>
     
 </div>
     <%}%>
