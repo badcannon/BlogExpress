@@ -1,0 +1,25 @@
+<%- include("../partials/header") %>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
+
+<div class="ui container">
+    <form action="/blogs/<%=blog._id%>?_method=PUT" method="post" class="ui form">
+        <input type="text" name="title" placeholder="Title" value="<%=blog.title%>"/><br/>
+        <input type="text" name="image" placeholder="Main Image" value="<%=blog.image%>"/>
+        <textarea name="content"><%=blog.content%></textarea>
+        <button type="submit" class="ui animated button" tabindex="0">
+            <div class="visible content">Submit</div>
+            <div class="hidden content">
+              <i class="right arrow icon"></i>
+            </div> 
+          </button>
+    </form>
+</div>
+
+
+
+<script>
+CKEDITOR.replace( 'content' );
+</script>
+ 
+<%- include("../partials/footer") %>

@@ -1,0 +1,30 @@
+<%- include ("../partials/header" ) %>
+<div class="ui container segment">
+<h1 class="ui header block">Register</h1>
+<form class="ui form" action="/user" method="POST">
+  <div class="field">
+    <label>Email</label>
+    <input type="email" name="email" placeholder="Email" required="true">
+  </div> 
+  <div class="field">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Username"  required="true">
+    </div>
+    <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password"  required="true">
+      </div>
+      <div class="field">
+        <label>Image</label>
+        <input type="text" name="image" placeholder="Image Url"/>
+      </div>
+      <div class="field">
+        <label>Secret Code</label>
+        <input type="password" name="secretCode" placeholder="Secret Code (ADMIN)"/>
+      </div>
+    <button class="ui button" type="submit">Submit</button>
+  </form>
+</div>
+<%- include ("../partials/footer" ) %>
+
+ 

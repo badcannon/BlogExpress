@@ -1,0 +1,72 @@
+<%- include('../partials/header')%>
+<div class="ui segment container" >
+<div class="ui huge header container"><h1 class="ui huge header "><%=blog.title%></h1>
+</div>
+<div class="ui container">
+    <p><em><%=moment(blog.createdDate).fromNow()%></em>/<em><a href="/user/<%=blog.author.id%>"><%=blog.author.username%></a></em></p>
+<img class="ui image fluid rounded"src="<%=blog.image%>" />
+<div class="ui fluid ">
+<%-blog.content%>
+</div>
+
+<%if((CurrentUser && blog.author.id.equals(CurrentUser.id)) || (CurrentUser && CurrentUser.isAdmin)){%>
+<div  style="margin:20px 0 ;">
+<a href="/blogs/<%=blog._id%>/edit" class="ui button attached left inverted yellow">Edit</a>
+<form action="/blogs/<%=blog._id%>?_method=DELETE" method="POST" style="display: inline;">
+  <button class="ui button attached right inverted red" >Delete</button>
+</form>
+</div>
+<%}%>
+</div>
+</div>
+<div class="ui large header container block">Comments</div>
+<div class="ui comments large container">
+   <!--Starts Here !-->
+   <%for(comment of blog.comments) {%>
+    <div class="comment">
+      <a class="avatar">
+        <img src="<%=comment.author.image%>">
+      </a>
+      <div class="content">
+        <a class="author" href="/user/<%=comment.author.id%>"><%=comment.author.username%></a>
+        <div class="text" id="<%=comment._id%>">
+          <%=comment.text%>
+        </div>
+        <%if((CurrentUser && comment.author.id.equals(CurrentUser.id)) || (CurrentUser && CurrentUser.isAdmin) ){%>
+        <div class="actions">
+          <a class="reply"> 
+            <input class="hide mini ui button" type="submit" id="reply" value="Reply"> 
+          </a>
+          <a class="edit hide mini ui button" id="<%=comment._id%>">Edit</a>
+          <a class="hide">
+          <form action="/blogs/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST">
+            <input class="hide mini ui button" type="submit" value="Delete"> 
+          </form>
+        </a>
+        </div>
+      <%}%>
+      </div>
+    </div>
+    <%}%>
+    <!--Ends Here !-->
+    <button class="right floated ui button huge">Add Comment</button>
+    <form class="ui reply form hidden" action="/blogs/<%=blog._id%>/comment/" method="POST">
+        <div class="field">
+          <textarea name="text"></textarea>
+        </div>
+        <button class="ui blue labeled submit icon button ">
+          <i class="icon edit"></i> Reply
+        </button>
+      </form>
+      <form class="ui reply form hidden" id="EditForm" action="" method="POST">
+        <div class="field">
+          <textarea name="text"></textarea>
+        </div>
+        <button class="ui blue labeled submit icon button ">
+          <i class="icon edit"></i> Edit
+        </button>
+      </form>
+  </div>
+
+<script src="/js/commentLogic.js"></script src="/public/js/commentLogic.js">
+<%- include('../partials/footer')%>

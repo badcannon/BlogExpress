@@ -1,0 +1,28 @@
+<%- include('../partials/header')%>
+ <div class="ui container" >
+ <%if(blogs == []){ %>
+    <p>There is nothing to Show :(</p>
+ <%}%>
+<%for(blog of blogs){ %>
+   <div class="ui segment" id="posts">
+    <img class= "ui rounded floated image"id="smallImage"src="<%=blog.image%>" alt="" >
+    <div class="ui text container">
+        <a href="/blogs/<%=blog._id%>"><h3 class="ui header"><%=blog.title%></h3></a>
+        <p><em><%=moment(blog.createdDate).fromNow()%></em>/<em><%=blog.author.username%></em></p>
+        <p><%=blog.content.substring(0,300)%>....</p></div>
+    
+</div>
+    <%}%>
+</div>
+<script>
+    var images = document.querySelectorAll("img");
+    for(var i = 0 ; i < images.length ; i++){
+        if(i % 2 == 0){
+            images[i].classList.toggle("right");
+        }
+        else{
+            images[i].classList.toggle("left")
+        }
+    }
+</script>
+<%- include('../partials/footer')%>

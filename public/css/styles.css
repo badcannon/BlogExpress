@@ -1,0 +1,32 @@
+div.ui.segment#posts{
+    height: 250px;
+}
+
+button.right.floated{
+    margin-bottom: 5px;
+}
+
+.hidden{
+    display: none;
+    transition: all ease-in-out 2ms;
+}
+
+button.right.floated.ui.button.huge{
+    margin-top: 40px;
+}
+
+#smallImage {
+   height:230px;
+   width: 200px;
+
+}
+
+.floatMe{
+    float: left;
+    margin:10px 15px !important;
+}
+
+
+
+
+
