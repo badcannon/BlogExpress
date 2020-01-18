@@ -68,9 +68,6 @@ app.use(commentRoutes);
 app.use(userRoutes);
 app.use(customRoutes);
 
-app.get("*", (req, res) => {
-  res.redirect("/blogs");
-});
 
 // require("./seed")();
 

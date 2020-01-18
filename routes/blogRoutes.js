@@ -5,6 +5,14 @@ var middleware = require("../middleware");
 var Blogs = require("../models/blog");
 
 
+
+// Index Route : 
+router.get("/",(req,res)=>{
+
+    res.redirect("/blogs");
+});
+
+
 // index route :D
 router.get("/blogs",(req,res)=>{
 
